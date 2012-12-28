@@ -27,4 +27,8 @@ class CardTest < MiniTest::Unit::TestCase
   def test_rank_over_10_scores_10
     assert_equal 10, Blackjack::Card.new(11, :hearts).score
   end
+
+  def test_aces_score_11
+    assert_equal 11, Blackjack::Card.new(1, :hearts).score
+  end
 end

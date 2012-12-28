@@ -23,6 +23,8 @@ module Blackjack
     def score
       if @rank > 10
         10
+      elsif @rank == 1
+        11
       else
         @rank
       end
