@@ -20,6 +20,14 @@ module Blackjack
       @suit = suit
     end
 
+    def score
+      if @rank > 10
+        10
+      else
+        @rank
+      end
+    end
+    
     def to_s
       rank_letter + suit.to_s[0]
     end
