@@ -20,6 +20,10 @@ module Blackjack
       total
     end
 
+    def bust?
+      score > MAXIMUM
+    end
+    
     private
     
     def use_ace_as_1_where_necessary(total, number_of_aces)

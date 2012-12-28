@@ -29,4 +29,18 @@ class HandTest < MiniTest::Unit::TestCase
 
     assert_equal 12, Blackjack::Hand.new(cards).score
   end
+
+  def test_hand_is_bust_if_over_21
+    cards = [Blackjack::Card.new(10, :diamonds),
+             Blackjack::Card.new(11, :clubs),
+             Blackjack::Card.new(12, :hearts)]
+
+    assert Blackjack::Hand.new(cards).bust?
+
+    cards = [Blackjack::Card.new(1, :diamonds),
+             Blackjack::Card.new(11, :clubs),
+             Blackjack::Card.new(12, :hearts)]
+
+    refute Blackjack::Hand.new(cards).bust?
+  end
 end
