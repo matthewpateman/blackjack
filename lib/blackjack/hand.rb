@@ -6,6 +6,10 @@ module Blackjack
       @cards = cards
     end
 
+    def add(card)
+      @cards << card
+    end
+    
     def score
       total = 0
       number_of_aces = 0

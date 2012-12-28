@@ -43,4 +43,13 @@ class HandTest < MiniTest::Unit::TestCase
 
     refute Blackjack::Hand.new(cards).bust?
   end
+
+  def test_add_card_to_hand
+    cards = [Blackjack::Card.new(2, :diamonds),
+             Blackjack::Card.new(3, :clubs)]
+    hand = Blackjack::Hand.new(cards)
+    
+    hand.add(Blackjack::Card.new(12, :hearts))
+    assert_equal 15, hand.score
+  end
 end
