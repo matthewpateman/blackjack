@@ -1,5 +1,7 @@
 module Blackjack
   class Hand
+    MAXIMUM = 21
+    
     def initialize(cards)
       @cards = cards
     end
@@ -13,7 +15,7 @@ module Blackjack
         number_of_aces += 1 if card.ace?
       end
 
-      while total > 21 && number_of_aces > 0
+      while total > MAXIMUM && number_of_aces > 0
         total -= 10
         number_of_aces -= 1
       end
