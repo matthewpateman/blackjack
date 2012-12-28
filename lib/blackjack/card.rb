@@ -4,6 +4,17 @@ module Blackjack
     
     attr_reader :rank, :suit
 
+    # Creates a full 52 card deck as an array
+    def self.make_deck
+      deck = []
+      SUITS.each do |suit|
+        (1..13).each do |rank|
+          deck << new(rank, suit)
+        end
+      end
+      deck
+    end
+    
     def initialize(rank, suit)
       @rank = rank
       @suit = suit

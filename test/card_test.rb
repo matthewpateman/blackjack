@@ -19,4 +19,8 @@ class CardTest < MiniTest::Unit::TestCase
   def test_suits
     assert_equal [:spades, :hearts, :diamonds, :clubs], Blackjack::Card::SUITS
   end
+
+  def test_make_deck
+    assert_equal 52, Blackjack::Card.make_deck.size
+  end
 end
