@@ -20,10 +20,14 @@ module Blackjack
       @suit = suit
     end
 
+    def ace?
+      @rank == 1
+    end
+    
     def score
       if @rank > 10
         10
-      elsif @rank == 1
+      elsif ace?
         11
       else
         @rank

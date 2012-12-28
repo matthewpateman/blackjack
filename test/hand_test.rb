@@ -14,4 +14,19 @@ class HandTest < MiniTest::Unit::TestCase
 
     assert_equal 13, Blackjack::Hand.new(cards).score
   end
+
+  def test_hand_score_uses_11_for_aces_when_possible
+    cards = [Blackjack::Card.new(1, :diamonds),
+             Blackjack::Card.new(12, :clubs)]
+
+    assert_equal 21, Blackjack::Hand.new(cards).score
+  end
+
+  def test_hand_score_uses_11_for_aces_when_necessary
+    cards = [Blackjack::Card.new(1, :diamonds),
+             Blackjack::Card.new(1, :clubs),
+             Blackjack::Card.new(12, :hearts)]
+
+    assert_equal 12, Blackjack::Hand.new(cards).score
+  end
 end

@@ -6,7 +6,18 @@ module Blackjack
 
     def score
       total = 0
-      @cards.each {|card| total += card.score }
+      number_of_aces = 0
+
+      @cards.each do |card|
+        total += card.score
+        number_of_aces += 1 if card.ace?
+      end
+
+      while total > 21 && number_of_aces > 0
+        total -= 10
+        number_of_aces -= 1
+      end
+      
       total
     end
   end

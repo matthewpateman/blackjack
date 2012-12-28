@@ -31,4 +31,9 @@ class CardTest < MiniTest::Unit::TestCase
   def test_aces_score_11
     assert_equal 11, Blackjack::Card.new(1, :hearts).score
   end
+
+  def test_card_is_an_ace
+    assert Blackjack::Card.new(1, :hearts).ace?
+    refute Blackjack::Card.new(2, :hearts).ace?
+  end
 end
