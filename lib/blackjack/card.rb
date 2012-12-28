@@ -1,7 +1,9 @@
 module Blackjack
   class Card
-    attr_reader :rank, :suit
+    SUITS = [:spades, :hearts, :diamonds, :clubs]
     
+    attr_reader :rank, :suit
+
     def initialize(rank, suit)
       @rank = rank
       @suit = suit

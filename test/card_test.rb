@@ -15,4 +15,8 @@ class CardTest < MiniTest::Unit::TestCase
     assert_equal "Ad", Blackjack::Card.new(1, :diamonds).to_s
     assert_equal "Jc", Blackjack::Card.new(11, :clubs).to_s
   end
+
+  def test_suits
+    assert_equal [:spades, :hearts, :diamonds, :clubs], Blackjack::Card::SUITS
+  end
 end
