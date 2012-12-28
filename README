@@ -1,0 +1,28 @@
+Blackjack
+=========
+
+A simple blackjack game.
+
+Requirements
+------------
+
+* Players interact with the game through the console
+* A normal 52 card deck of cards is used
+* Picture cards are worth 10 points
+* Aces are worth either 11 points or 1 point
+* Players with a score over 21 go bust
+* There is a player and a dealer
+* The player may play as many rounds as they like
+* before each round the deck is shuffled afresh
+
+In a round:
+
+* player and dealer draw hands of 2 cards, and these are diplayed
+* player may hit until they go bust, or stand
+* each hit draws 1 more card
+* after the player has stood, dealer plays
+* Dealer always hits with a score up to 16, and stands on 17 or higher
+* The Dealer wins if they have a score greater or equal than the
+  player, otherwise the player wins
+* The result is reported to the player
+
