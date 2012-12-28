@@ -52,4 +52,10 @@ class HandTest < MiniTest::Unit::TestCase
     hand.add(Blackjack::Card.new(12, :hearts))
     assert_equal 15, hand.score
   end
+
+  def test_hand_displayed_as_string
+    cards = [Blackjack::Card.new(2, :diamonds),
+             Blackjack::Card.new(3, :clubs)]
+    assert_equal "2d, 3c", Blackjack::Hand.new(cards).to_s
+  end
 end

@@ -27,6 +27,12 @@ module Blackjack
     def bust?
       score > MAXIMUM
     end
+
+    def to_s
+      output = []
+      @cards.each {|card| output << card.to_s }
+      output.join(", ")
+    end
     
     private
     
