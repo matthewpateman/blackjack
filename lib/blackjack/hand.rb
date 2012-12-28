@@ -29,8 +29,7 @@ module Blackjack
     end
 
     def to_s
-      output = []
-      @cards.each {|card| output << card.to_s }
+      output = @cards.map {|card| card.to_s }
       output.join(", ")
     end
     
