@@ -28,20 +28,22 @@ module Blackjack
         dealer.add(deck.pop)
       end
 
-      winner = if player.bust?
-                 :dealer
-               elsif dealer.bust?
-                 :player
-               elsif player.score > dealer.score
-                 :player
-               else
-                 :dealer
-               end
-
-      if winner == :player
+      if calculate_winner(player, dealer) == :player
         puts "You win"
       else
         puts "You lose"
+      end
+    end
+
+    def calculate_winner(player, dealer)
+      if player.bust?
+        :dealer
+      elsif dealer.bust?
+        :player
+      elsif player.score > dealer.score
+        :player
+      else
+        :dealer
       end
     end
   end
