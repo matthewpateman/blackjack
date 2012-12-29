@@ -1,7 +1,7 @@
 module Blackjack
   class Game
     def run
-      puts "Welcome to Blackjack"
+      display_welcome
 
       deck = Card.make_deck.shuffle
       player = Hand.new(deck.pop(2))
@@ -22,7 +22,7 @@ module Blackjack
         elsif input == "s"
           break
         else
-          puts "Input not valid"
+          display_incorrect_input
         end
       end
     end
@@ -33,6 +33,14 @@ module Blackjack
       end
     end
 
+    def display_welcome
+      puts "Welcome to Blackjack"
+    end
+    
+    def display_incorrect_input
+      puts "Input not valid"
+    end
+    
     def display_winner(winner)
       if winner == :player
         puts "You win"
