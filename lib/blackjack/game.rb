@@ -7,14 +7,18 @@ module Blackjack
     def run
       @ui.display_welcome
 
-      deck = Card.make_deck.shuffle
-      player = Hand.new(deck.pop(2))
-      dealer = Hand.new(deck.pop(2))
+      loop do
+        deck = Card.make_deck.shuffle
+        player = Hand.new(deck.pop(2))
+        dealer = Hand.new(deck.pop(2))
       
-      player_turn(player, dealer, deck)
-      dealer_turn(player, dealer, deck)
+        player_turn(player, dealer, deck)
+        dealer_turn(player, dealer, deck)
+        
+        @ui.display_winner(calculate_winner(player, dealer))
 
-      @ui.display_winner(calculate_winner(player, dealer))
+        break unless @ui.play_another_round?
+      end
     end
 
     def player_turn(player, dealer, deck)

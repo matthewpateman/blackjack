@@ -1,5 +1,10 @@
 module Blackjack
   class ConsoleUI
+    def play_another_round?
+      puts "Do you want to play another round? [y]es / [n]o:"
+      gets.strip[0].downcase == "y"
+    end
+    
     def display_welcome
       puts "Welcome to Blackjack"
     end
