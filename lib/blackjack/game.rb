@@ -9,11 +9,7 @@ module Blackjack
       dealer = Hand.new(deck.pop(2))
 
       until player.bust?
-        puts "The dealer's hand is #{dealer} (#{dealer.score})"
-        puts "Your hand is #{player} (#{player.score})"
-        puts "[h]it or [s]tand?:"
-
-        input = gets.strip[0].downcase
+        input = get_player_choice(player, dealer)
 
         if input == "h"
           player.add(deck.pop)
@@ -35,6 +31,13 @@ module Blackjack
       end
     end
 
+    def get_player_choice(player, dealer)
+      puts "The dealer's hand is #{dealer} (#{dealer.score})"
+      puts "Your hand is #{player} (#{player.score})"
+      puts "[h]it or [s]tand?:"
+      gets.strip[0].downcase
+    end
+    
     def calculate_winner(player, dealer)
       if player.bust?
         :dealer
