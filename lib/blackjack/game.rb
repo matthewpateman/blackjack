@@ -1,13 +1,19 @@
 module Blackjack
   class Game
-    def run      
+    def run
       puts "Welcome to Blackjack"
 
       deck = Card.make_deck.shuffle
-
       player = Hand.new(deck.pop(2))
       dealer = Hand.new(deck.pop(2))
+      
+      player_turn(player, dealer, deck)
+      dealer_turn(player, dealer, deck)
 
+      display_winner(calculate_winner(player, dealer))
+    end
+
+    def player_turn(player, dealer, deck)
       until player.bust?
         input = get_player_choice(player, dealer)
 
@@ -19,18 +25,22 @@ module Blackjack
           puts "Input not valid"
         end
       end
+    end
 
+    def dealer_turn(player, dealer, deck)
       until dealer.score >= 17
         dealer.add(deck.pop)
       end
+    end
 
-      if calculate_winner(player, dealer) == :player
+    def display_winner(winner)
+      if winner == :player
         puts "You win"
       else
         puts "You lose"
       end
     end
-
+    
     def get_player_choice(player, dealer)
       puts "The dealer's hand is #{dealer} (#{dealer.score})"
       puts "Your hand is #{player} (#{player.score})"
