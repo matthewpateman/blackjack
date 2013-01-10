@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+require_relative '../lib/blackjack'
+
+puts "Welcome to blackjack!"
+
+def display_hand_choice(round)
+  puts "The dealer's hand is #{round.dealer_hand} (#{round.dealer_hand.value})"
+  puts "Your hand is #{round.player_hand} (#{round.player_hand.value})"
+  puts "Do you want to [h]it or [s]tand:"
+end
+
+def play_round
+  deck = Card.full_deck.shuffle
+  round = Round.new(deck)
+
+  until round.player_hand.bust?
+    display_hand_choice(round)
+
+    decision = gets[0].downcase
+    
+    if decision == "h"
+      round.player_hit
+    else
+      break
+    end
+  end
+
+  round.dealer_turn
+
+  puts "Your final hand is #{round.player_hand}"
+  puts "The dealer's hand was #{round.dealer_hand}"
+  puts "The winner is #{round.winner}"
+end
+
+loop do
+  play_round
+  puts "Do you want to play again? [Y]es [N]o"
+  decision = gets[0].downcase
+
+  break unless decision == "y"
+end
